@@ -3,6 +3,7 @@
 <p align="center">
   <img src="https://github.com/akhilchibber/clustering-sensor-data/blob/main/UML_Diagram.png?raw=true" alt="Global Passport Guide">
 </p>
+
 ## Problem
 
 A machine has 20 sensors recording data during breakdowns. We have 1600 breakdown records. Experts manually labeled only 40 of these into 3 categories which are possibly the reasons for breakdown. The goal is to use those 40 labels to classify the remaining 1560 breakdowns into the same 3 categories.
