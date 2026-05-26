@@ -63,17 +63,3 @@ Take-Home-Assignment/
 ## How to Run
 
 Open `Multi_Sensor_Classification.ipynb` in Google Colab and run all cells. It will train all 3 models, evaluate them, and save predictions and model files.
-
-## How to Predict on New Data
-
-```python
-import joblib
-import numpy as np
-
-scaler = joblib.load('models/scaler.pkl')
-model = joblib.load('models/random_forest_model.pkl')
-
-# new_data = numpy array with shape (n_samples, 20)
-new_data_scaled = scaler.transform(new_data)
-predictions = model.predict(new_data_scaled)
-```
