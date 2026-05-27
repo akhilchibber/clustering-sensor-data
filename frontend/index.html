@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Breakdown Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <h1>Sensor Breakdown Prediction</h1>
+            <p class="subtitle">Classify machine breakdowns using 20 sensor readings</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- MODEL SELECTION -->
+        <section class="card">
+            <h2>1. Select Models</h2>
+            <p class="hint">Choose one or more models to compare predictions</p>
+            <div class="model-checkboxes">
+                <label class="model-option">
+                    <input type="checkbox" id="model_rf" value="random_forest" checked>
+                    <span class="model-card">
+                        <span class="model-name">Random Forest</span>
+                    </span>
+                </label>
+                <label class="model-option">
+                    <input type="checkbox" id="model_ls" value="label_spreading">
+                    <span class="model-card">
+                        <span class="model-name">Label Spreading</span>
+                    </span>
+                </label>
+                <label class="model-option">
+                    <input type="checkbox" id="model_svm" value="svm">
+                    <span class="model-card">
+                        <span class="model-name">SVM</span>
+                    </span>
+                </label>
+            </div>
+        </section>
+
+        <!-- INPUT METHOD -->
+        <section class="card">
+            <h2>2. Input Sensor Data</h2>
+            <div class="input-tabs">
+                <button class="tab-btn active" onclick="switchTab('manual')">Manual Entry</button>
+                <button class="tab-btn" onclick="switchTab('file')">Upload File</button>
+            </div>
+
+            <!-- Manual Input -->
+            <div id="tab-manual" class="tab-content active">
+                <p class="hint">Enter 20 sensor values separated by commas (values between -1 and 1)</p>
+                <textarea id="sensor-input" rows="3" placeholder="e.g. 0.5, -0.3, 0.8, 0.1, -0.6, 0.2, -0.9, 0.4, 0.7, -0.1, 0.3, -0.5, 0.6, -0.2, 0.8, -0.7, 0.1, 0.4, -0.3, 0.9"></textarea>
+                <button class="btn-predict" onclick="predictManual()">Predict</button>
+            </div>
+
+            <!-- File Upload -->
+            <div id="tab-file" class="tab-content">
+                <p class="hint">Upload a CSV, XLS, or XLSX file with 20 sensor columns (no label column needed)</p>
+                <div class="file-upload-area" id="drop-area">
+                    <input type="file" id="file-input" accept=".csv,.xls,.xlsx" onchange="handleFileSelect(event)">
+                    <p>📂 Drag & drop file here or <span class="browse-link">browse</span></p>
+                    <p class="file-name" id="file-name"></p>
+                </div>
+                <button class="btn-predict" onclick="predictFile()">Predict from File</button>
+            </div>
+        </section>
+
+        <!-- LOADING -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Running predictions...</p>
+        </div>
+
+        <!-- RESULTS -->
+        <section id="results-section" class="card hidden">
+            <h2>3. Results</h2>
+            <div id="results-container"></div>
+            <div id="download-section" class="hidden">
+                <button class="btn-download" onclick="downloadExcel()">📥 Download Results as Excel</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Sensor Breakdown Prediction — ML6 Assignment | Models: Random Forest, Label Spreading, SVM</p>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
