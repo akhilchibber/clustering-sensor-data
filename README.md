@@ -24,16 +24,16 @@ As I was already doing a Semi-Supervised Clustering, I thought why not give it a
 
 ## Assumptions and Tradeoffs
 
-- The 40 expert labels are assumed to be correct which showcases 3 reasons for the breakdown of machine.
-- There is no ground truth for the 1560 predictions, so we are dependent on confidence scores top evaluate the performance of our ml models.
+1. The 40 expert labels are assumed to be correct which showcases 3 reasons for the breakdown of machine.
+2. There is no ground truth for the 1560 predictions, so we are dependent on confidence scores top evaluate the performance of our ml models.
 
 ## What I Would Improve With More Time
 
-- Request more expert labels.
-- Add synthetic data using SMOTE without including the 1 labeled data which we need to test for evaluating the accuracy.
-- Try Self-Training Classifier like Random Forest in which we can iteratively label confident points and retrain which can lead to more labeled data, ofcourse it is based on the assumption that the predicted labels are going to be accurate.
-- Explore feature engineering e.g. sensor ratios, interactions, etc. to create more features to train the model.
-- Build an ensemble that combines predictions from all 3 models to give one prediction using a voting mechanism.
+1. Request more expert labels.
+2. Add synthetic data using SMOTE without including the 1 labeled data which we need to test for evaluating the accuracy.
+3. Try Self-Training Classifier like Random Forest in which we can iteratively label confident points and retrain which can lead to more labeled data, ofcourse it is based on the assumption that the predicted labels are going to be accurate.
+4. Explore feature engineering e.g. sensor ratios, interactions, etc. to create more features to train the model.
+5. Build an ensemble that combines predictions from all 3 models to give one prediction using a voting mechanism.
 
 ## Folder Structure
 
